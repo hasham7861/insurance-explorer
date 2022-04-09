@@ -5,12 +5,10 @@ import { InsuranceList } from './components/InsuranceList';
 function App(): JSX.Element {
 
   return (
-    <div className="App">
       <Routes>
         <Route path="/" element={<InsuranceList/>}/>
         <Route path="/buy" element={<InsuranceBuy/>}/>
       </Routes>
-    </div>
   );
 }
 
