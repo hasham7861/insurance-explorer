@@ -1,4 +1,4 @@
-import { IOffering } from "../types/Offering"
+import { IOffering } from "../../types/Offering"
 
 const insuranceOfferings: IOffering[] = [
     {

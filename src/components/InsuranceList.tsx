@@ -1,16 +1,18 @@
 import { Col, Container, Row, Stack } from "react-bootstrap"
-import { insuranceOfferings } from "../api/offering.data"
-import OfferingTile from "../reusable/OfferingTile"
-import { PageHeading } from "../reusable/PageHeading";
+import { useNavigate } from "react-router-dom";
+import { getAllInsuranceOfferings } from "../api/offering/offering.api";
+import OfferingTile from "./reusable/OfferingTile"
+import { PageHeading } from "./reusable/PageHeading";
 
 export function InsuranceList(): JSX.Element {
+    let navigate = useNavigate();
 
     const onProceedBuyHandler = (offeringId: number) =>{
-        console.log('Implement Buy logic here', offeringId);
+        navigate('/buy', {state: {offeringId}})
     }
 
     const offeringTiles = () => {
-        return insuranceOfferings.map((offering)=>
+        return getAllInsuranceOfferings().map((offering)=>
             <OfferingTile key={offering.id} onProceedBuy={onProceedBuyHandler} {...offering}/>
         )
     } 

@@ -1,8 +1,9 @@
-import { Button, Card, Row, Col } from "react-bootstrap"
-import { IOffering } from "../types/Offering";
+import { Card, Row, Col } from "react-bootstrap"
+import { IOffering } from "../../types/Offering";
+import { ActionButton } from "./ActionButton";
 
 interface IOfferingTileProps extends IOffering {
-    onProceedBuy: Function
+    onProceedBuy?: Function
 }
 
 const OfferingTile = (props: IOfferingTileProps): JSX.Element => {
@@ -23,7 +24,10 @@ const OfferingTile = (props: IOfferingTileProps): JSX.Element => {
                     <Card.Text>{description}</Card.Text>
                 </Card.Body>
                 <Card.Body>
-                    <Button variant="primary" onClick={() => onProceedBuy(id)}>{'Proceed to buy'}</Button>
+                    { onProceedBuy ? 
+                        <ActionButton variant="primary" onClickHandler={() => onProceedBuy(id)} message="Proceed to buy"/>
+                        : ''
+                    }
                 </Card.Body>
             </Col>
         </Row>
